@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 //Hello This IS SAI i gool hai hia 
 //hello
-//sai can u see dis
+//HELO I LIKE TREES
 
 public class Game implements KeyListener, ActionListener {
 
