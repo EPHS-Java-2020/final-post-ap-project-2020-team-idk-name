@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 //Hello This IS SAI i gool hai hia 
 //hello
-// k it worked can u see dis
 
 public class Game implements KeyListener, ActionListener {
 
