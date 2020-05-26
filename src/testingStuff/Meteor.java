@@ -13,22 +13,6 @@ public class Meteor {
 	private Image img;
 	public int w, h;
 	
-	public double getX() {
-		return x;
-	}
-	
-	public double getY() {
-		return x;
-	}
-	
-	public double getW() {
-		return w;
-	}
-	
-	public double getH() {
-		return h;
-	}
-	
 	public Meteor() {
 		Random r=new Random();
 		w=r.nextInt(101)+50;
