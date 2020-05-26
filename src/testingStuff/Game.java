@@ -74,6 +74,10 @@ public class Game implements KeyListener, ActionListener {
 		ArrayList<Meteor> toRemove=new ArrayList<Meteor>();
 		for (Meteor n:m) {
 			n.physics();
+			if (dude.getRect().intersects(n.getRect())) {
+				toRemove.add(n);
+				n.y=1000;
+			}
 			if(n.y>=1000) {
 				toRemove.add(n);
 			}
