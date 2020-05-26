@@ -2,6 +2,7 @@ package testingStuff;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -12,6 +13,15 @@ public class TheDude {
 	private Image img;
 	public int w = 100, h = 100;
 	public boolean crouch = false;
+	public boolean isSlow = false;
+
+	public Rectangle getRect() {
+		return new Rectangle((int) x, (int) y, w, h);
+	}
+
+	public void setSlow(boolean state) {
+		isSlow = state;
+	}
 
 	public TheDude() {
 		x = (Game.WIDTH / 2) - (w / 2);
@@ -28,8 +38,13 @@ public class TheDude {
 	}
 
 	public void physics() {
-		y += vy;
-		x += vx;
+		if (isSlow == false) {
+			y += vy;
+			x += vx;
+		} else {
+			y+=vy/2;
+			x+=vx/2;
+		}
 		vy = vy + .5;
 		if ((y + h) > Game.floorHeight) {
 			y = Game.floorHeight - h;
@@ -79,7 +94,7 @@ public class TheDude {
 	public void jump() {
 		crouch = false;
 		if (y == Game.floorHeight - h) {
-			if (vx > 0) {
+			if (vx >= 0) {
 				try {
 					img = ImageIO.read(new File("how_all_of_us_are_perry_the_platypus_0-cutout.png"));
 				} catch (IOException e) {

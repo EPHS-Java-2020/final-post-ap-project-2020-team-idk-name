@@ -4,12 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-//Hello This IS SAI i gool hai hia 
-//hello
-//*sagsy music plays*
 
 
 
@@ -21,6 +20,11 @@ public class Game implements KeyListener, ActionListener {
 	private JFrame frame;
 	private JPanel panel;
 	private Timer t;
+	private int met;
+	private ArrayList<Meteor> m=new ArrayList<Meteor>();
+	private Random r=new Random();
+	private int interval=60;
+	private ArrayList<Drink> d=new ArrayList<Drink>();
 
 	public static void main(String[] args) {
 		new Game().go();
@@ -29,7 +33,7 @@ public class Game implements KeyListener, ActionListener {
 	public void go() {
 		frame = new JFrame("");
 		dude = new TheDude();
-		panel = new GamePanels(this, dude);
+		panel = new GamePanels(this, dude, m, d);
 		frame.add(panel);
 
 		frame.setSize(WIDTH, HEIGHT);
@@ -41,6 +45,7 @@ public class Game implements KeyListener, ActionListener {
 		t.start();
 	}
 
+	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			dude.jump();
@@ -56,10 +61,34 @@ public class Game implements KeyListener, ActionListener {
 		}
 	}
 
-	@Override
+
 	public void actionPerformed(ActionEvent e) {
 		panel.repaint();
 		dude.physics();
+		if (met==interval) {
+			m.add(new Meteor());
+			interval=(r.nextInt(6)+1)*15;
+			met=0;
+			d.add(new Drink());
+		}
+		ArrayList<Meteor> toRemove=new ArrayList<Meteor>();
+		for (Meteor n:m) {
+			n.physics();
+			if(n.y>=1000) {
+				toRemove.add(n);
+			}
+		}
+		for (Meteor r:toRemove) {
+			m.remove(r);
+		}
+		for(Drink r:d) {
+			if (dude.getRect().intersects(r.getRect())) {
+				r.remove();
+				dude.setSlow(true);
+			}
+		}
+		met++;
+		
 	}
 
 

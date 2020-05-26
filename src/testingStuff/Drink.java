@@ -2,45 +2,42 @@ package testingStuff;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Rectangle;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.util.Random;
+import java.awt.Rectangle;
 
-public class Meteor {
+public class Drink {
 	
-	public double x, y, vy;
+	public int w=50,h=100;
+	public int x,y;
 	private Image img;
-	public int w, h;
 	
 	public Rectangle getRect() {
-		return new Rectangle((int)x,(int)y,w,h);
+		return new Rectangle(x,y,w,h);
 	}
 	
-	public Meteor() {
+	public Drink() {
 		Random r=new Random();
-		w=r.nextInt(101)+50;
-		h=w;
-		x = r.nextInt(Game.WIDTH-w+1);
-		y = 0;
-		vy = (r.nextInt(21)+10)/10;
+		y=Game.floorHeight-h;
+		x=r.nextInt(Game.WIDTH+1);
 		try {
-			img = ImageIO.read(new File("meteor-cutout.png"));
+			img=ImageIO.read(new File("drink.png"));
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-	}
-	
-	public void physics() {
-		y += vy;
-		if ((y + h) > Game.floorHeight) {
-			y = 1000;
 		}
 	}
 	
 	public void update(Graphics g) {
 		g.drawImage(img, (int) x, (int) y, w, h, null);
 	}
+	
+	public void remove() {
+		y=1000;
+	}
+	
+	
 
 }
