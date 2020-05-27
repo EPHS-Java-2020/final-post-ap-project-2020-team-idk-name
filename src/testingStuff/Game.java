@@ -15,6 +15,7 @@ import javax.swing.Timer;
 public class Game implements KeyListener, ActionListener {
 
 	public static final int FPS = 60, WIDTH = 1366, HEIGHT = 695,floorHeight=500;
+	//hi
 
 	private TheDude dude;
 	private JFrame frame;
