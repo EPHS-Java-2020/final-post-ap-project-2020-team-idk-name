@@ -14,7 +14,7 @@ public class TheDude {
 	public int w = 50, h = 100;
 	public boolean crouch = false;
 	public boolean isSlow = false;
-public boolean didJump=false;
+	public boolean didJump=false;
 	public Rectangle getRect() {
 		return new Rectangle((int) x, (int) y, w, h);
 	}

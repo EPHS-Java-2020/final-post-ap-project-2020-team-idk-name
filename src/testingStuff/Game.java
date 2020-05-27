@@ -24,8 +24,9 @@ public class Game implements KeyListener, ActionListener {
 	private ArrayList<Meteor> m=new ArrayList<Meteor>();
 	private Random r=new Random();
 	private int interval=60;
-	private ArrayList<Drink> d=new ArrayList<Drink>();
-
+	private ArrayList<Drink> d=new ArrayList<Drink>();	
+	private int driInt=600;
+	private int drink;
 	public static void main(String[] args) {
 		new Game().go();
 	}
@@ -68,8 +69,13 @@ public class Game implements KeyListener, ActionListener {
 		if (met==interval) {
 			m.add(new Meteor());
 			interval=(r.nextInt(6)+1)*15;
-			d.add(new Drink());
+			
 			met=0;
+		}
+		if(drink==driInt) {
+			d.add(new Drink());
+			driInt= (r.nextInt(3)+1)*600;
+			drink=0;
 		}
 		ArrayList<Meteor> toRemove=new ArrayList<Meteor>();
 		for (Meteor n:m) {
@@ -92,6 +98,7 @@ public class Game implements KeyListener, ActionListener {
 			}
 		}
 		met++;
+		drink++;
 		
 	}
 
