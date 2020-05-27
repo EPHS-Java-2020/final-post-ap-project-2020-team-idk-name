@@ -68,8 +68,8 @@ public class Game implements KeyListener, ActionListener {
 		if (met==interval) {
 			m.add(new Meteor());
 			interval=(r.nextInt(6)+1)*15;
-			met=0;
 			d.add(new Drink());
+			met=0;
 		}
 		ArrayList<Meteor> toRemove=new ArrayList<Meteor>();
 		for (Meteor n:m) {
