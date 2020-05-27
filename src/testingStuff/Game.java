@@ -26,7 +26,9 @@ public class Game implements KeyListener, ActionListener {
 	private int interval=60;
 	private ArrayList<Drink> d=new ArrayList<Drink>();	
 	private int driInt=600;
-	private int drink;
+	private int drink=0;
+	private int drinkLenMax=300;
+	private int drinkLen;
 	public static void main(String[] args) {
 		new Game().go();
 	}
@@ -95,7 +97,14 @@ public class Game implements KeyListener, ActionListener {
 			if (dude.getRect().intersects(r.getRect())) {
 				r.remove();
 				dude.setSlow(true);
+				drinkLen=0;
 			}
+		}
+		if(drinkLen==drinkLenMax) {
+			dude.setSlow(false);
+		}
+		if(dude.isSlow()) {
+			drinkLen++;
 		}
 		met++;
 		drink++;

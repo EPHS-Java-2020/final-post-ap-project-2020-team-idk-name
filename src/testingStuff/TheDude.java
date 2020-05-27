@@ -22,6 +22,10 @@ public class TheDude {
 	public void setSlow(boolean state) {
 		isSlow = state;
 	}
+	
+	public boolean isSlow() {
+		return isSlow;
+	}
 
 	public TheDude() {
 		x = (Game.WIDTH / 2) - (w / 2);
@@ -101,7 +105,9 @@ public class TheDude {
 	public void jump() {
 		didJump=true;
 		crouch = false;
-		vx=5*vx/3;
+		if (Math.abs(vx)==3) {
+			vx=5*vx/3;
+		}
 		if (y == Game.floorHeight - h) {
 			if (vx > 0) {
 				img=standImgR;
