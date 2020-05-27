@@ -71,33 +71,7 @@ public class TheDude {
 		if (x + w > Game.WIDTH) {
 			left();
 			x = Game.WIDTH - w;
-		}
-//		if(crouch&&img==crouchImgL&&isSlow==false) {
-//			vx=-3;
-//		}
-//		if(crouch&&img==crouchImgR&&isSlow==false) {
-//			vx=3;
-//		}
-//		if(crouch&&img==crouchImgL&&isSlow==true) {
-//			vx=-1.5;
-//		}
-//		if(crouch&&img==crouchImgR&&isSlow==true) {
-//			vx=1.5;
-//		}
-//		if(!crouch&&img==standImgL&&isSlow==false) {
-//			vx=-5;
-//		}
-//		if(!crouch&&img==standImgR&&isSlow==false) {
-//			vx=5;
-//		}
-//		if(!crouch&&img==standImgL&&isSlow==true) {
-//			vx=-2.5;
-//		}
-//		if(!crouch&&img==standImgR&&isSlow==true) {
-//			vx=2.5;
-//		}
-		
-		
+		}	
 	}
 
 	public void right() {
