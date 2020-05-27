@@ -115,7 +115,7 @@ public class TheDude {
 				img=crouchImgL;
 			}
 			h = 50;
-			y = y - h;
+			y = Game.floorHeight-50;
 		}
 	}
 
