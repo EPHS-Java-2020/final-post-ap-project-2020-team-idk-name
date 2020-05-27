@@ -73,8 +73,8 @@ public class Game implements KeyListener, ActionListener {
 			met=0;
 		}
 		if(drink==driInt) {
-			d.add(new Drink());
-			driInt= (r.nextInt(3)+1)*600;
+			d.add(new Drink(dude.getRect()));
+			driInt= (r.nextInt(11)+10)*60;
 			drink=0;
 		}
 		ArrayList<Meteor> toRemove=new ArrayList<Meteor>();

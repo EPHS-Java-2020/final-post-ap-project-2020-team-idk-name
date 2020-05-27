@@ -72,36 +72,39 @@ public class TheDude {
 			left();
 			x = Game.WIDTH - w;
 		}
-		if(crouch&&img==crouchImgL&&isSlow==false) {
-			vx=-3;
-		}
-		if(crouch&&img==crouchImgR&&isSlow==false) {
-			vx=3;
-		}
-		if(crouch&&img==crouchImgL&&isSlow==true) {
-			vx=-1.5;
-		}
-		if(crouch&&img==crouchImgR&&isSlow==true) {
-			vx=1.5;
-		}
-		if(!crouch&&img==standImgL&&isSlow==false) {
-			vx=-5;
-		}
-		if(!crouch&&img==standImgR&&isSlow==false) {
-			vx=5;
-		}
-		if(!crouch&&img==standImgL&&isSlow==true) {
-			vx=-2.5;
-		}
-		if(!crouch&&img==standImgR&&isSlow==true) {
-			vx=2.5;
-		}
+//		if(crouch&&img==crouchImgL&&isSlow==false) {
+//			vx=-3;
+//		}
+//		if(crouch&&img==crouchImgR&&isSlow==false) {
+//			vx=3;
+//		}
+//		if(crouch&&img==crouchImgL&&isSlow==true) {
+//			vx=-1.5;
+//		}
+//		if(crouch&&img==crouchImgR&&isSlow==true) {
+//			vx=1.5;
+//		}
+//		if(!crouch&&img==standImgL&&isSlow==false) {
+//			vx=-5;
+//		}
+//		if(!crouch&&img==standImgR&&isSlow==false) {
+//			vx=5;
+//		}
+//		if(!crouch&&img==standImgL&&isSlow==true) {
+//			vx=-2.5;
+//		}
+//		if(!crouch&&img==standImgR&&isSlow==true) {
+//			vx=2.5;
+//		}
 		
 		
 	}
 
 	public void right() {
 		vx = 5;
+		if(crouch==true) {
+			vx=3*vx/5;
+		}
 		if (!crouch) {
 			img=standImgR;
 		} else {
@@ -111,6 +114,9 @@ public class TheDude {
 
 	public void left() {
 		vx = -5;
+		if(crouch==true) {
+			vx=3*vx/5;
+		}
 		if (!crouch) {
 			img=standImgL;
 		} else {
@@ -121,6 +127,7 @@ public class TheDude {
 	public void jump() {
 		didJump=true;
 		crouch = false;
+		vx=5*vx/3;
 		if (y == Game.floorHeight - h) {
 			if (vx > 0) {
 				img=standImgR;
@@ -137,6 +144,9 @@ public class TheDude {
 	public void crouch() {
 		if (y + h == Game.floorHeight) {
 			crouch = true;
+			if(crouch==true) {
+				vx=3*vx/5;
+			}
 			if (vx > 0) {
 				img=crouchImgR;
 			} else {

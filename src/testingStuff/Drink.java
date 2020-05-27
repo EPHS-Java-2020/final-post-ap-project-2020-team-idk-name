@@ -18,10 +18,12 @@ public class Drink {
 		return new Rectangle(x,y,w,h);
 	}
 	
-	public Drink() {
+	public Drink(Rectangle dudeRect) {
 		Random r=new Random();
 		y=Game.floorHeight-h;
+		do {
 		x=r.nextInt(Game.WIDTH+1);
+		}while(dudeRect.intersects(getRect()));
 		try {
 			img=ImageIO.read(new File("drink.png"));
 		} catch (IOException e) {
