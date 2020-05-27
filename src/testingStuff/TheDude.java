@@ -53,12 +53,17 @@ public class TheDude {
 	}
 
 	public void physics() {
-		if (isSlow == false) {
-			y += vy;
-			x += vx;
-		} else {
-			y+=vy/2;
-			x+=vx/2;
+		if(crouch&&img==crouchImgL&&isSlow==false) {
+			vx=-3;
+		}
+		if(crouch&&img==crouchImgR&&isSlow==false) {
+			vx=3;
+		}
+		if(crouch&&img==crouchImgL&&isSlow==true) {
+			vx=-1.5;
+		}
+		if(crouch&&img==crouchImgR&&isSlow==true) {
+			vx=1.5;
 		}
 		vy = vy + .5;
 		if ((y + h) > Game.floorHeight) {
@@ -71,18 +76,6 @@ public class TheDude {
 		if (x + w > Game.WIDTH) {
 			left();
 			x = Game.WIDTH - w;
-		}
-		if(crouch&&img==crouchImgL&&isSlow==false) {
-			vx=-3;
-		}
-		if(crouch&&img==crouchImgR&&isSlow==false) {
-			vx=3;
-		}
-		if(crouch&&img==crouchImgL&&isSlow==true) {
-			vx=-1.5;
-		}
-		if(crouch&&img==crouchImgR&&isSlow==true) {
-			vx=1.5;
 		}
 	}
 
