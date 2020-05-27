@@ -21,6 +21,7 @@ public class Game implements KeyListener, ActionListener {
 	private JPanel panel;
 	private Timer t;
 	private int met;
+	private int drinkint= 1000;
 	private ArrayList<Meteor> m=new ArrayList<Meteor>();
 	private Random r=new Random();
 	private int interval=60;
@@ -67,7 +68,7 @@ public class Game implements KeyListener, ActionListener {
 		dude.physics();
 		if (met==interval) {
 			m.add(new Meteor());
-			interval=(r.nextInt(6)+1)*15;
+			interval=(r.nextInt(7)+1)*20;
 			met=0;
 			d.add(new Drink());
 		}
@@ -92,6 +93,7 @@ public class Game implements KeyListener, ActionListener {
 			}
 		}
 		met++;
+		drinkint++;
 		
 	}
 

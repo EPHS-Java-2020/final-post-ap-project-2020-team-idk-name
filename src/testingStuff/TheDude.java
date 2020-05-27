@@ -34,6 +34,13 @@ public class TheDude {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		if (x==0) {
+			right();
+		}
+		if(x==1366) {
+			left();
+		}
+		
 
 	}
 
@@ -50,11 +57,15 @@ public class TheDude {
 			y = Game.floorHeight - h;
 		}
 		if (x < 0) {
+			
+			right();	
 			x = 0;
 		}
 		if (x + w > Game.WIDTH) {
+			left();
 			x = Game.WIDTH - w;
 		}
+		
 	}
 
 	public void right() {
