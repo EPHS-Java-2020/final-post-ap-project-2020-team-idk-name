@@ -11,7 +11,7 @@ public class TheDude {
 
 	public double x, y, vx, vy;
 	private Image img;
-	public int w = 100, h = 100;
+	public int w = 50, h = 100;
 	public boolean crouch = false;
 	public boolean isSlow = false;
 
@@ -26,11 +26,10 @@ public class TheDude {
 	public TheDude() {
 		x = (Game.WIDTH / 2) - (w / 2);
 		y = Game.floorHeight - h;
-		;
 		vx = 0;
 		vy = 0;
 		try {
-			img = ImageIO.read(new File("how_all_of_us_are_perry_the_platypus_0-cutout.png"));
+			img = ImageIO.read(new File("character-cutout.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -61,13 +60,13 @@ public class TheDude {
 		vx = 5;
 		if (!crouch) {
 			try {
-				img = ImageIO.read(new File("how_all_of_us_are_perry_the_platypus_0-cutout.png"));
+				img = ImageIO.read(new File("character-cutout.png"));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		} else {
 			try {
-				img = ImageIO.read(new File("peryr.png"));
+				img = ImageIO.read(new File("dude.png"));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -78,13 +77,13 @@ public class TheDude {
 		vx = -5;
 		if (!crouch) {
 			try {
-				img = ImageIO.read(new File("per.png"));
+				img = ImageIO.read(new File("character-cutout.png"));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		} else {
 			try {
-				img = ImageIO.read(new File("peryl.png"));
+				img = ImageIO.read(new File("dude.png"));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -96,13 +95,13 @@ public class TheDude {
 		if (y == Game.floorHeight - h) {
 			if (vx >= 0) {
 				try {
-					img = ImageIO.read(new File("how_all_of_us_are_perry_the_platypus_0-cutout.png"));
+					img = ImageIO.read(new File("character-cutout.png"));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			} else {
 				try {
-					img = ImageIO.read(new File("per.png"));
+					img = ImageIO.read(new File("character-cutout.png"));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -118,13 +117,13 @@ public class TheDude {
 			crouch = true;
 			if (vx > 0) {
 				try {
-					img = ImageIO.read(new File("peryr.png"));
+					img = ImageIO.read(new File("dude.png"));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			} else {
 				try {
-					img = ImageIO.read(new File("peryl.png"));
+					img = ImageIO.read(new File("dude.png"));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
