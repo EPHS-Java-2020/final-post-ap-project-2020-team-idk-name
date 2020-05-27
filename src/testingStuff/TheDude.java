@@ -124,7 +124,7 @@ public class TheDude {
 	public void crouch() {
 		if (y + h == Game.floorHeight) {
 			crouch = true;
-			if(crouch==true) {
+			if(Math.abs(vx)==5) {
 				vx=3*vx/5;
 			}
 			if (vx > 0) {
