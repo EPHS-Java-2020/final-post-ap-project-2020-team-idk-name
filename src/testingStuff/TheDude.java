@@ -72,6 +72,18 @@ public class TheDude {
 			left();
 			x = Game.WIDTH - w;
 		}
+		if(crouch&&img==crouchImgL&&isSlow==false) {
+			vx=-3;
+		}
+		if(crouch&&img==crouchImgR&&isSlow==false) {
+			vx=3;
+		}
+		if(crouch&&img==crouchImgL&&isSlow==true) {
+			vx=-1.5;
+		}
+		if(crouch&&img==crouchImgR&&isSlow==true) {
+			vx=1.5;
+		}
 	}
 
 	public void right() {
