@@ -14,7 +14,7 @@ public class TheDude {
 	public int w = 50, h = 100;
 	public boolean crouch = false;
 	public boolean isSlow = false;
-
+public boolean didJump=false;
 	public Rectangle getRect() {
 		return new Rectangle((int) x, (int) y, w, h);
 	}
@@ -84,6 +84,20 @@ public class TheDude {
 		if(crouch&&img==crouchImgR&&isSlow==true) {
 			vx=1.5;
 		}
+		if(!crouch&&img==standImgL&&isSlow==false) {
+			vx=-5;
+		}
+		if(!crouch&&img==standImgR&&isSlow==false) {
+			vx=5;
+		}
+		if(!crouch&&img==standImgL&&isSlow==true) {
+			vx=-2.5;
+		}
+		if(!crouch&&img==standImgR&&isSlow==true) {
+			vx=2.5;
+		}
+		
+		
 	}
 
 	public void right() {
@@ -105,6 +119,7 @@ public class TheDude {
 	}
 
 	public void jump() {
+		didJump=true;
 		crouch = false;
 		if (y == Game.floorHeight - h) {
 			if (vx > 0) {
@@ -116,6 +131,7 @@ public class TheDude {
 			y = Game.floorHeight - h;
 			vy = -12;
 		}
+
 	}
 
 	public void crouch() {
