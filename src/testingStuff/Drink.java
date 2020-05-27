@@ -10,7 +10,7 @@ import java.awt.Rectangle;
 
 public class Drink {
 	
-	public int w=50,h=100;
+	public int w=25,h=50;
 	public int x,y;
 	private Image img;
 	

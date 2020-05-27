@@ -10,8 +10,8 @@ import javax.imageio.ImageIO;
 public class TheDude {
 
 	public double x, y, vx, vy;
-	private Image img;
-	public int w = 100, h = 100;
+	private Image img, standImgL,standImgR,crouchImgL,crouchImgR;
+	public int w = 50, h = 100;
 	public boolean crouch = false;
 	public boolean isSlow = false;
 
@@ -26,21 +26,29 @@ public class TheDude {
 	public TheDude() {
 		x = (Game.WIDTH / 2) - (w / 2);
 		y = Game.floorHeight - h;
-		;
 		vx = 0;
 		vy = 0;
 		try {
-			img = ImageIO.read(new File("how_all_of_us_are_perry_the_platypus_0-cutout.png"));
+			standImgL = ImageIO.read(new File("standL.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		if (x==0) {
-			right();
+		try {
+			crouchImgL = ImageIO.read(new File("crouchL.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		if(x==1366) {
-			left();
+		try {
+			standImgR = ImageIO.read(new File("standR.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		
+		try {
+			crouchImgR = ImageIO.read(new File("crouchR.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		img=standImgL;
 
 	}
 
@@ -57,66 +65,38 @@ public class TheDude {
 			y = Game.floorHeight - h;
 		}
 		if (x < 0) {
-			
-			right();	
 			x = 0;
 		}
 		if (x + w > Game.WIDTH) {
-			left();
 			x = Game.WIDTH - w;
 		}
-		
 	}
 
 	public void right() {
 		vx = 5;
 		if (!crouch) {
-			try {
-				img = ImageIO.read(new File("how_all_of_us_are_perry_the_platypus_0-cutout.png"));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			img=standImgR;
 		} else {
-			try {
-				img = ImageIO.read(new File("peryr.png"));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			img=crouchImgR;
 		}
 	}
 
 	public void left() {
 		vx = -5;
 		if (!crouch) {
-			try {
-				img = ImageIO.read(new File("per.png"));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			img=standImgL;
 		} else {
-			try {
-				img = ImageIO.read(new File("peryl.png"));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			img=crouchImgL;
 		}
 	}
 
 	public void jump() {
 		crouch = false;
 		if (y == Game.floorHeight - h) {
-			if (vx >= 0) {
-				try {
-					img = ImageIO.read(new File("how_all_of_us_are_perry_the_platypus_0-cutout.png"));
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+			if (vx > 0) {
+				img=standImgR;
 			} else {
-				try {
-					img = ImageIO.read(new File("per.png"));
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				img=standImgL;
 			}
 			h = 100;
 			y = Game.floorHeight - h;
@@ -128,17 +108,9 @@ public class TheDude {
 		if (y + h == Game.floorHeight) {
 			crouch = true;
 			if (vx > 0) {
-				try {
-					img = ImageIO.read(new File("peryr.png"));
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				img=crouchImgR;
 			} else {
-				try {
-					img = ImageIO.read(new File("peryl.png"));
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				img=crouchImgL;
 			}
 			h = 50;
 			y = y - h;
