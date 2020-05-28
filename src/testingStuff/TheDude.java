@@ -80,13 +80,9 @@ public class TheDude {
 	}
 
 	public void right() {
-		if (vx == 0) {
-			vx = 5;
-		} else {
-			vx = -vx;
-		}
+		vx = 5;
 		if (crouch == true) {
-			vx = 3 * vx / 5;
+			vx = 3;
 		}
 		if (!crouch) {
 			img = standImgR;
@@ -96,12 +92,9 @@ public class TheDude {
 	}
 
 	public void left() {
-		if (vx == 0) {
-			vx = -5;
-		}
-		vx = -vx;
+		vx=-5;
 		if (crouch == true) {
-			vx = 3 * vx / 5;
+			vx = -3;
 		}
 		if (!crouch) {
 			img = standImgL;
@@ -113,9 +106,9 @@ public class TheDude {
 	public void jump() {
 		didJump = true;
 		crouch = false;
-//		if (Math.abs(vx)==3) {
+		if (Math.abs(vx)==3) {
 		vx = 5 * vx / 3;
-//		}
+		}
 		if (y == Game.floorHeight - h) {
 			if (vx > 0) {
 				img = standImgR;
