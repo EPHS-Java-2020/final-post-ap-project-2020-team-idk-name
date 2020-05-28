@@ -116,14 +116,16 @@ public class TheDude {
 
 	public void jump() {
 		didJump = true;
-		crouch = false;
 		if (Math.abs(vx) == 3) {
 			vx = 5 * vx / 3;
 		}
 		if (y == Game.floorHeight - h) {
 			h = 100;
 			y = Game.floorHeight - h;
-			vy = -12;
+			if (crouch == false) {
+				vy = -12;
+			}
+			crouch = false;
 		}
 
 	}
