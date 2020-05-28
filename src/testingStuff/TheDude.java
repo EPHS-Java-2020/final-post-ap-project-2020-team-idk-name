@@ -10,7 +10,8 @@ import javax.imageio.ImageIO;
 public class TheDude {
 
 	public double x, y, vx, vy;
-	private Image img, standImgL, standImgR, crouchImgL, crouchImgR;
+	private Image img, standL, standR, crouchL, crouchR;
+	private Image standLD, standRD, crouchLD, crouchRD;
 	public int w = 50, h = 100;
 	public boolean crouch = false;
 	public boolean isSlow = false;
@@ -34,26 +35,46 @@ public class TheDude {
 		vx = 0;
 		vy = 0;
 		try {
-			standImgL = ImageIO.read(new File("standL.png"));
+			standL = ImageIO.read(new File("standL.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		try {
-			crouchImgL = ImageIO.read(new File("crouchL.png"));
+			crouchL = ImageIO.read(new File("crouchL.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		try {
-			standImgR = ImageIO.read(new File("standR.png"));
+			standR = ImageIO.read(new File("standR.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		try {
-			crouchImgR = ImageIO.read(new File("crouchR.png"));
+			crouchR = ImageIO.read(new File("crouchR.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		img = standImgL;
+		try {
+			standRD = ImageIO.read(new File("standRD.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			crouchRD = ImageIO.read(new File("crouchRD.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			standLD = ImageIO.read(new File("standLD.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			crouchLD = ImageIO.read(new File("crouchLD.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		img = standL;
 
 	}
 
@@ -84,37 +105,22 @@ public class TheDude {
 		if (crouch == true) {
 			vx = 3;
 		}
-		if (!crouch) {
-			img = standImgR;
-		} else {
-			img = crouchImgR;
-		}
 	}
 
 	public void left() {
-		vx=-5;
+		vx = -5;
 		if (crouch == true) {
 			vx = -3;
-		}
-		if (!crouch) {
-			img = standImgL;
-		} else {
-			img = crouchImgL;
 		}
 	}
 
 	public void jump() {
 		didJump = true;
 		crouch = false;
-		if (Math.abs(vx)==3) {
-		vx = 5 * vx / 3;
+		if (Math.abs(vx) == 3) {
+			vx = 5 * vx / 3;
 		}
 		if (y == Game.floorHeight - h) {
-			if (vx > 0) {
-				img = standImgR;
-			} else {
-				img = standImgL;
-			}
 			h = 100;
 			y = Game.floorHeight - h;
 			vy = -12;
@@ -128,17 +134,41 @@ public class TheDude {
 			if (Math.abs(vx) == 5) {
 				vx = 3 * vx / 5;
 			}
-			if (vx > 0) {
-				img = crouchImgR;
-			} else {
-				img = crouchImgL;
-			}
 			h = 50;
 			y = Game.floorHeight - 50;
 		}
 	}
 
 	public void update(Graphics g) {
+		if (crouch == true) {
+			if (isSlow == false) {
+				if (vx > 0) {
+					img = crouchR;
+				} else {
+					img = crouchL;
+				}
+			} else {
+				if (vx > 0) {
+					img = crouchRD;
+				} else {
+					img = crouchLD;
+				}
+			}
+		} else {
+			if (isSlow == false) {
+				if (vx > 0) {
+					img = standR;
+				} else {
+					img = standL;
+				}
+			} else {
+				if (vx > 0) {
+					img = standRD;
+				} else {
+					img = standLD;
+				}
+			}
+		}
 		g.drawImage(img, (int) x, (int) y, w, h, null);
 	}
 
