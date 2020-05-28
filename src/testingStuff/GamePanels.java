@@ -38,7 +38,7 @@ public class GamePanels extends JPanel {
 	public void paintComponent(Graphics g1) {
 		g1.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
 		g1.drawImage(background, 0, 0, Game.WIDTH, Game.HEIGHT, null);
-		g1.setColor(Color.green);
+		g1.setColor(new Color(56,24,0));
 		g1.fillRect(0, Game.floorHeight, Game.WIDTH, Game.HEIGHT - Game.floorHeight);
 		dude.update(g1);
 		for(Drink r:d) {
