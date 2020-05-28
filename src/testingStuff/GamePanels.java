@@ -28,7 +28,7 @@ public class GamePanels extends JPanel {
 		this.m = m;
 		this.d=d;
 		try {
-			background = ImageIO.read(new File("hey.png"));
+			background = ImageIO.read(new File("background.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
