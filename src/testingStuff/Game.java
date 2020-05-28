@@ -30,6 +30,9 @@ public class Game implements KeyListener, ActionListener {
 	private int drink=0;
 	private int drinkLenMax=300;
 	private int drinkLen;
+	private ArrayList<fireball> f= new ArrayList<fireball>();
+	private int fireInt = 600;
+	private int fire = 0;
 	public static void main(String[] args) {
 		new Game().go();
 	}
@@ -37,7 +40,7 @@ public class Game implements KeyListener, ActionListener {
 	public void go() {
 		frame = new JFrame("");
 		dude = new TheDude();
-		panel = new GamePanels(this, dude, m, d);
+		panel = new GamePanels(this, dude, m, d,f);
 		frame.add(panel);
 
 		frame.setSize(WIDTH, HEIGHT);
@@ -75,6 +78,11 @@ public class Game implements KeyListener, ActionListener {
 			
 			met=0;
 		}
+		if(fire == fireInt) {
+			f.add(new fireball());
+			fireInt = (r.nextInt(11)+10)*60;
+			fire = 0;
+		}
 		if(drink==driInt) {
 			d.add(new Drink(dude.getRect()));
 			driInt= (r.nextInt(11)+10)*60;
@@ -91,8 +99,21 @@ public class Game implements KeyListener, ActionListener {
 				toRemove.add(n);
 			}
 		}
+		ArrayList<fireball> toRemoveF= new ArrayList<fireball>();
+		for (fireball z:f) {
+			z.physics();
+			if(dude.getRect().intersects(z.getRect())) {
+				toRemoveF.add(z);
+			}
+			if(z.x>=1500) {
+				toRemoveF.add(z);
+			}
+		}
 		for (Meteor r:toRemove) {
 			m.remove(r);
+		}
+		for (fireball fir: toRemoveF) {
+			f.remove(fir);
 		}
 		for(Drink r:d) {
 			if (dude.getRect().intersects(r.getRect())) {
@@ -109,6 +130,7 @@ public class Game implements KeyListener, ActionListener {
 		}
 		met++;
 		drink++;
+		fire++;
 		
 	}
 
