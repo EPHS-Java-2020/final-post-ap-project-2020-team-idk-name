@@ -10,11 +10,12 @@ import javax.imageio.ImageIO;
 public class TheDude {
 
 	public double x, y, vx, vy;
-	private Image img, standImgL,standImgR,crouchImgL,crouchImgR;
+	private Image img, standImgL, standImgR, crouchImgL, crouchImgR;
 	public int w = 50, h = 100;
 	public boolean crouch = false;
 	public boolean isSlow = false;
-	public boolean didJump=false;
+	public boolean didJump = false;
+
 	public Rectangle getRect() {
 		return new Rectangle((int) x, (int) y, w, h);
 	}
@@ -22,7 +23,7 @@ public class TheDude {
 	public void setSlow(boolean state) {
 		isSlow = state;
 	}
-	
+
 	public boolean isSlow() {
 		return isSlow;
 	}
@@ -52,7 +53,7 @@ public class TheDude {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		img=standImgL;
+		img = standImgL;
 
 	}
 
@@ -61,8 +62,8 @@ public class TheDude {
 			y += vy;
 			x += vx;
 		} else {
-			y+=vy/2;
-			x+=vx/2;
+			y += vy / 2;
+			x += vx / 2;
 		}
 		vy = vy + .5;
 		if ((y + h) > Game.floorHeight) {
@@ -75,44 +76,51 @@ public class TheDude {
 		if (x + w > Game.WIDTH) {
 			left();
 			x = Game.WIDTH - w;
-		}	
+		}
 	}
 
 	public void right() {
-		vx = 5;
-		if(crouch==true) {
-			vx=3*vx/5;
+		if (vx == 0) {
+			vx = 5;
+		} else {
+			vx = -vx;
+		}
+		if (crouch == true) {
+			vx = 3 * vx / 5;
 		}
 		if (!crouch) {
-			img=standImgR;
+			img = standImgR;
 		} else {
-			img=crouchImgR;
+			img = crouchImgR;
 		}
 	}
 
 	public void left() {
-		vx = -5;
-		if(crouch==true) {
-			vx=3*vx/5;
+		if (vx == 0) {
+			vx = -5;
+		}
+		vx = -vx;
+		if (crouch == true) {
+			vx = 3 * vx / 5;
 		}
 		if (!crouch) {
-			img=standImgL;
+			img = standImgL;
 		} else {
-			img=crouchImgL;
+			img = crouchImgL;
 		}
 	}
 
 	public void jump() {
-		didJump=true;
+		didJump = true;
 		crouch = false;
-		if (Math.abs(vx)==3) {
-			vx=5*vx/3;
-		}
+//		if (Math.abs(vx)==3) {
+		vx = 5 * vx / 3;
+//		}
 		if (y == Game.floorHeight - h) {
 			if (vx > 0) {
-				img=standImgR;
+				img = standImgR;
 			} else {
-				img=standImgL;
+				img = standImgL;
 			}
 			h = 100;
 			y = Game.floorHeight - h;
@@ -124,16 +132,16 @@ public class TheDude {
 	public void crouch() {
 		if (y + h == Game.floorHeight) {
 			crouch = true;
-			if(Math.abs(vx)==5) {
-				vx=3*vx/5;
+			if (Math.abs(vx) == 5) {
+				vx = 3 * vx / 5;
 			}
 			if (vx > 0) {
-				img=crouchImgR;
+				img = crouchImgR;
 			} else {
-				img=crouchImgL;
+				img = crouchImgL;
 			}
 			h = 50;
-			y = Game.floorHeight-50;
+			y = Game.floorHeight - 50;
 		}
 	}
 
