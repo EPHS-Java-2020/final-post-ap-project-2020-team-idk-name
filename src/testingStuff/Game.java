@@ -30,7 +30,7 @@ public class Game implements KeyListener, ActionListener {
 	private int drink=0;
 	private int drinkLenMax=300;
 	private int drinkLen;
-	private ArrayList<fireball> f= new ArrayList<fireball>();
+	private ArrayList<Fireball> f= new ArrayList<Fireball>();
 	private int fireInt = 600;
 	private int fire = 0;
 	public static void main(String[] args) {
@@ -79,7 +79,7 @@ public class Game implements KeyListener, ActionListener {
 			met=0;
 		}
 		if(fire == fireInt) {
-			f.add(new fireball());
+			f.add(new Fireball());
 			fireInt = (r.nextInt(11)+10)*60;
 			fire = 0;
 		}
@@ -99,8 +99,8 @@ public class Game implements KeyListener, ActionListener {
 				toRemove.add(n);
 			}
 		}
-		ArrayList<fireball> toRemoveF= new ArrayList<fireball>();
-		for (fireball z:f) {
+		ArrayList<Fireball> toRemoveF= new ArrayList<Fireball>();
+		for (Fireball z:f) {
 			z.physics();
 			if(dude.getRect().intersects(z.getRect())) {
 				toRemoveF.add(z);
@@ -113,7 +113,7 @@ public class Game implements KeyListener, ActionListener {
 		for (Meteor r:toRemove) {
 			m.remove(r);
 		}
-		for (fireball fir: toRemoveF) {
+		for (Fireball fir: toRemoveF) {
 			f.remove(fir);
 		}
 		for(Drink r:d) {
