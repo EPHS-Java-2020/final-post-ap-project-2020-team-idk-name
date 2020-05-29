@@ -22,13 +22,15 @@ public class GamePanels extends JPanel {
 	private ArrayList<Meteor> m = new ArrayList<>();
 	private ArrayList<Drink> d=new ArrayList<>();
 	private ArrayList<Fireball> f = new ArrayList<>();
+	private Hearts h;
 
-	public GamePanels(Game game, TheDude dude, ArrayList<Meteor> m, ArrayList<Drink> d,ArrayList<Fireball>f) {
+	public GamePanels(Game game, TheDude dude, ArrayList<Meteor> m, ArrayList<Drink> d,ArrayList<Fireball>f,Hearts h) {
 		this.dude = dude;
 		this.game = game;
 		this.m = m;
 		this.d=d;
 		this.f=f;
+		this.h=h;
 		try {
 			background = ImageIO.read(new File("background.png"));
 		} catch (IOException e) {
@@ -52,6 +54,8 @@ public class GamePanels extends JPanel {
 		for (Fireball x:f) {
 			x.update(g1);
 		}
+		h.update(g1);
+		
 	
 	}
 
