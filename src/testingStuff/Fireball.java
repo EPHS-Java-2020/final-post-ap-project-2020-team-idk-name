@@ -9,7 +9,7 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
-public class fireball {
+public class Fireball {
 	public double x, y, vx;
 	private Image img;
 	public int w, h;
@@ -18,7 +18,7 @@ public class fireball {
 		return new Rectangle((int)x,(int)y,w,h);
 	}
 	
-	public fireball() {
+	public Fireball() {
 		Random r=new Random();
 		w=20;
 		h=10;

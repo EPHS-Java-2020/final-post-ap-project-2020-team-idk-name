@@ -21,9 +21,9 @@ public class GamePanels extends JPanel {
 	private Image background;
 	private ArrayList<Meteor> m = new ArrayList<>();
 	private ArrayList<Drink> d=new ArrayList<>();
-	private ArrayList<fireball> f = new ArrayList<>();
+	private ArrayList<Fireball> f = new ArrayList<>();
 
-	public GamePanels(Game game, TheDude dude, ArrayList<Meteor> m, ArrayList<Drink> d,ArrayList<fireball>f) {
+	public GamePanels(Game game, TheDude dude, ArrayList<Meteor> m, ArrayList<Drink> d,ArrayList<Fireball>f) {
 		this.dude = dude;
 		this.game = game;
 		this.m = m;
@@ -49,7 +49,7 @@ public class GamePanels extends JPanel {
 		for (Meteor e : m) {
 			e.update(g1);
 		}
-		for (fireball x:f) {
+		for (Fireball x:f) {
 			x.update(g1);
 		}
 	
