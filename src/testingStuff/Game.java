@@ -115,6 +115,7 @@ public class Game implements KeyListener, ActionListener {
 			if(z.x>=1500) {
 				toRemoveF.add(z);
 			}
+			
 		}
 		for (Meteor r:toRemove) {
 			m.remove(r);
