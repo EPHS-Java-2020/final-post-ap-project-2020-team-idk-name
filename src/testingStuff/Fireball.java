@@ -22,8 +22,9 @@ public class Fireball {
 	public Fireball() {
 		Random r = new Random();
 		k = r.nextInt(2);
-		w = 20;
-		h = 10;
+		int s=r.nextInt(3)+1;
+		w = s*20;
+		h = s*10;
 		vx = ((r.nextInt(41) + 10) / 10);
 		if (k == 0) {
 			x = 0;
