@@ -63,8 +63,6 @@ public class GamePanels extends JPanel {
 		g1.drawString("Score: "+game.getScore(), 30, 50);
 		g1.drawImage(heart,1250, 20, 30,30,null);
 		g1.drawString("x"+game.getLives(), 1280, 50);
-		
-	
 	}
 
 }
