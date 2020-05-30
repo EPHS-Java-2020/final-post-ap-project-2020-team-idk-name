@@ -1,6 +1,7 @@
 package testingStuff;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
@@ -11,29 +12,32 @@ import javax.swing.JPanel;
 
 public class GamePanels extends JPanel {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private TheDude dude;
-	@SuppressWarnings("unused")
 	private Game game;
 	private Image background;
+	private Image heart;
 	private ArrayList<Meteor> m = new ArrayList<>();
 	private ArrayList<Drink> d=new ArrayList<>();
 	private ArrayList<Fireball> f = new ArrayList<>();
-	private Hearts h;
 
-	public GamePanels(Game game, TheDude dude, ArrayList<Meteor> m, ArrayList<Drink> d,ArrayList<Fireball>f,Hearts h) {
+	public GamePanels(Game game, TheDude dude, ArrayList<Meteor> m, ArrayList<Drink> d,ArrayList<Fireball>f) {
 		this.dude = dude;
 		this.game = game;
 		this.m = m;
 		this.d=d;
 		this.f=f;
-		this.h=h;
+//		this.h=h;
 		try {
 			background = ImageIO.read(new File("background.png"));
 		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			heart=ImageIO.read(new File("Heart-Icon.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -54,7 +58,11 @@ public class GamePanels extends JPanel {
 		for (Fireball x:f) {
 			x.update(g1);
 		}
-		h.update(g1);
+		g1.setFont(new Font("Super Mario 256", Font.PLAIN, 40));
+		g1.setColor(Color.black);
+		g1.drawString("Score: "+game.getScore(), 30, 50);
+		g1.drawImage(heart,1250, 20, 30,30,null);
+		g1.drawString("x"+game.getLives(), 1280, 50);
 		
 	
 	}

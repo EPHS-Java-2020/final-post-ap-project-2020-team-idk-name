@@ -34,7 +34,8 @@ public class Game implements KeyListener, ActionListener {
 	private int fireInt = 600;
 	private int fire = 0;
 	private int lives=3;
-	private Hearts h=new Hearts(this);
+	private int score=0;
+	
 	public static void main(String[] args) {
 		new Game().go();
 	}
@@ -42,7 +43,7 @@ public class Game implements KeyListener, ActionListener {
 	public void go() {
 		frame = new JFrame("");
 		dude = new TheDude();
-		panel = new GamePanels(this, dude, m, d,f,h);
+		panel = new GamePanels(this, dude, m, d,f);
 		frame.add(panel);
 
 		frame.setSize(WIDTH, HEIGHT);
@@ -72,6 +73,10 @@ public class Game implements KeyListener, ActionListener {
 	
 	public int getLives() {
 		return lives;
+	}
+	
+	public int getScore() {
+		return score;
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -139,7 +144,7 @@ public class Game implements KeyListener, ActionListener {
 		met++;
 		drink++;
 		fire++;
-		
+		score++;
 	}
 
 
