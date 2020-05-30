@@ -26,7 +26,7 @@ public class Game implements KeyListener, ActionListener {
 	private Random r=new Random();
 	private int interval=60;
 	private ArrayList<Drink> d=new ArrayList<Drink>();	
-	private int driInt=600;
+	private int driInt=900;
 	private int drink=0;
 	private int drinkLenMax=300;
 	private int drinkLen;

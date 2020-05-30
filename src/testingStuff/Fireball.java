@@ -24,7 +24,7 @@ public class Fireball {
 		k = r.nextInt(2);
 		w = 20;
 		h = 10;
-		vx = ((r.nextInt(21) + 10) / 10);
+		vx = ((r.nextInt(41) + 10) / 10);
 		if (k == 0) {
 			x = 0;
 			y = Game.floorHeight - 50;
