@@ -36,7 +36,6 @@ public class Game implements KeyListener, ActionListener {
 	private int score = 0;
 	private boolean isPlaying = false;
 	private boolean isDead = false;
-	public static boolean bugFixVal=false;
 	
 	public void reset() {
 		for(int n=m.size()-1;n>=0;n--){
@@ -60,15 +59,13 @@ public class Game implements KeyListener, ActionListener {
 		fireInt = 600;
 		fire = 0;
 		lives=3;
-		score = 0;
 		panel = new GamePanels(this, dude, m, d, f);
 		frame.add(panel);
-		frame.setSize(WIDTH, HEIGHT);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.setSize(WIDTH, HEIGHT);
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.addKeyListener(this);
-		bugFixVal=true;
-		t.stop();
+//		t.stop();
 	}
 
 	public static void main(String[] args) {
@@ -95,6 +92,7 @@ public class Game implements KeyListener, ActionListener {
 		frame.addKeyListener(this);
 
 		t = new Timer(1000 / FPS, this);
+		t.start();
 	}
 
 	@Override
@@ -114,7 +112,8 @@ public class Game implements KeyListener, ActionListener {
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			isPlaying = true;
 			isDead=false;
-			t.restart();
+			score=0;
+//			t.restart();
 		}
 	}
 

@@ -179,7 +179,9 @@ public class TheDude {
 		y = Game.floorHeight - h;
 		vx = 0;
 		vy = 0;
-		setSlow(false);
+		isSlow=false;
+		crouch=false;
+		img = standL;
 	}
 
 
