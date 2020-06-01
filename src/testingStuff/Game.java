@@ -28,6 +28,7 @@ public class Game implements KeyListener, ActionListener {
 	private int drink = 0;
 	private int drinkLenMax = 300;
 	private int drinkLen = 0;
+	private ArrayList<Drink> toRemoveD = new ArrayList<Drink>();
 	private ArrayList<Fireball> f = new ArrayList<Fireball>();
 	private ArrayList<Fireball> toRemoveF = new ArrayList<Fireball>();
 	private int fireInt = 600;
@@ -36,6 +37,7 @@ public class Game implements KeyListener, ActionListener {
 	private int score = 0;
 	private boolean isPlaying = false;
 	private boolean isDead = false;
+	
 
 	public void reset() {
 		for (int n = m.size() - 1; n >= 0; n--) {
@@ -164,18 +166,22 @@ public class Game implements KeyListener, ActionListener {
 				}
 
 			}
-			for (Meteor r : toRemove) {
-				m.remove(r);
-			}
-			for (Fireball fir : toRemoveF) {
-				f.remove(fir);
-			}
 			for (Drink r : d) {
 				if (dude.getRect().intersects(r.getRect())) {
+					toRemoveD.add(r);
 					r.remove();
 					dude.setSlow(true);
 					drinkLen = 0;
-				}
+					}
+			}
+			for (Meteor r:toRemove) {
+				m.remove(r);
+			}
+			for (Fireball fir: toRemoveF) {
+				f.remove(fir);
+			}
+			for (Drink dri:toRemoveD) {
+				d.remove(dri);
 			}
 			if (drinkLen == drinkLenMax) {
 				dude.setSlow(false);
