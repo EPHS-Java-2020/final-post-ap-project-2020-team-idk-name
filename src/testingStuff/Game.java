@@ -18,7 +18,7 @@ public class Game implements KeyListener, ActionListener {
 	private JFrame frame;
 	private JPanel panel;
 	private Timer t;
-	private int metInt=0;
+	private int metInt = 0;
 	private ArrayList<Meteor> m = new ArrayList<Meteor>();
 	private ArrayList<Meteor> toRemove = new ArrayList<Meteor>();
 	private Random r = new Random();
@@ -27,7 +27,7 @@ public class Game implements KeyListener, ActionListener {
 	private int driInt = 900;
 	private int drink = 0;
 	private int drinkLenMax = 300;
-	private int drinkLen=0;
+	private int drinkLen = 0;
 	private ArrayList<Fireball> f = new ArrayList<Fireball>();
 	private ArrayList<Fireball> toRemoveF = new ArrayList<Fireball>();
 	private int fireInt = 600;
@@ -36,16 +36,16 @@ public class Game implements KeyListener, ActionListener {
 	private int score = 0;
 	private boolean isPlaying = false;
 	private boolean isDead = false;
-	
+
 	public void reset() {
-		for(int n=m.size()-1;n>=0;n--){
+		for (int n = m.size() - 1; n >= 0; n--) {
 			m.remove(n);
 		}
-		for (int z=f.size()-1;z>=0;z--) {
+		for (int z = f.size() - 1; z >= 0; z--) {
 			f.remove(z);
 		}
 		dude.reset();
-		metInt=0;
+		metInt = 0;
 		m = new ArrayList<Meteor>();
 		toRemove = new ArrayList<Meteor>();
 		metInterval = 60;
@@ -53,29 +53,26 @@ public class Game implements KeyListener, ActionListener {
 		driInt = 900;
 		drink = 0;
 		drinkLenMax = 300;
-		drinkLen=0;
+		drinkLen = 0;
 		f = new ArrayList<Fireball>();
 		toRemoveF = new ArrayList<Fireball>();
 		fireInt = 600;
 		fire = 0;
-		lives=3;
+		lives = 3;
 		panel = new GamePanels(this, dude, m, d, f);
 		frame.add(panel);
-//		frame.setSize(WIDTH, HEIGHT);
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.addKeyListener(this);
-//		t.stop();
 	}
 
 	public static void main(String[] args) {
 		new Game().go();
 	}
-	
+
 	public boolean getPlaying() {
 		return isPlaying;
 	}
-	
+
 	public boolean getDead() {
 		return isDead;
 	}
@@ -110,10 +107,11 @@ public class Game implements KeyListener, ActionListener {
 			dude.crouch();
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			if (!isPlaying) {
+				score = 0;
+			}
 			isPlaying = true;
-			isDead=false;
-			score=0;
-//			t.restart();
+			isDead = false;
 		}
 	}
 
@@ -189,12 +187,12 @@ public class Game implements KeyListener, ActionListener {
 			drink++;
 			fire++;
 			score++;
-			if(lives==0) {
-				isDead=true;
-				isPlaying=false;
+			if (lives == 0) {
+				isDead = true;
+				isPlaying = false;
 			}
 		}
-		
+
 	}
 
 	public void keyTyped(KeyEvent e) {
