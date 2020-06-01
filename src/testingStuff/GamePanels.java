@@ -20,6 +20,7 @@ public class GamePanels extends JPanel {
 	private ArrayList<Meteor> m = new ArrayList<>();
 	private ArrayList<Drink> d = new ArrayList<>();
 	private ArrayList<Fireball> f = new ArrayList<>();
+	private int tempScore;
 
 	public GamePanels(Game game, TheDude dude, ArrayList<Meteor> m, ArrayList<Drink> d, ArrayList<Fireball> f) {
 		this.dude = dude;
@@ -42,17 +43,20 @@ public class GamePanels extends JPanel {
 
 	@Override
 	public void paintComponent(Graphics g1) {
+		if (Game.bugFixVal == false) {
+			tempScore=game.getScore();
+		}
 		g1.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
 		g1.drawImage(background, 0, 0, Game.WIDTH, Game.HEIGHT, null);
 		g1.setColor(new Color(56, 24, 0));
 		g1.fillRect(0, Game.floorHeight, Game.WIDTH, Game.HEIGHT - Game.floorHeight);
-		if (game.getDead()) {
+		if (game.getDead() && !game.getPlaying()) {
 			g1.setFont(new Font("Super Mario 256", Font.PLAIN, 40));
 			g1.setColor(Color.black);
-			g1.drawString("You died. Your score was "+game.getScore(), 400, 200);
+			g1.drawString("You died. Your score was " + tempScore, 400, 200);
 			g1.drawString("Press space to play again", 400, 250);
-			game.setLives(3);
-		} else if (game.getPlaying()) {
+			game.reset();
+		} else if (game.getPlaying() && !game.getDead()) {
 			dude.update(g1);
 			for (Drink r : d) {
 				r.update(g1);
@@ -71,8 +75,8 @@ public class GamePanels extends JPanel {
 		} else {
 			g1.setFont(new Font("Super Mario 256", Font.PLAIN, 40));
 			g1.setColor(Color.black);
-			g1.drawString("WELCOME TO GAME NAME", 400, 200);
-			g1.drawString("PRESS SPACE TO START", 400, 250);
+			g1.drawString("Welcome to Volcanic Panic", 400, 200);
+			g1.drawString("Press space to start", 400, 250);
 
 		}
 	}

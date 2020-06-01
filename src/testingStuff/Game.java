@@ -18,22 +18,58 @@ public class Game implements KeyListener, ActionListener {
 	private JFrame frame;
 	private JPanel panel;
 	private Timer t;
-	private int met;
+	private int metInt=0;
 	private ArrayList<Meteor> m = new ArrayList<Meteor>();
+	private ArrayList<Meteor> toRemove = new ArrayList<Meteor>();
 	private Random r = new Random();
-	private int interval = 60;
+	private int metInterval = 60;
 	private ArrayList<Drink> d = new ArrayList<Drink>();
 	private int driInt = 900;
 	private int drink = 0;
 	private int drinkLenMax = 300;
-	private int drinkLen;
+	private int drinkLen=0;
 	private ArrayList<Fireball> f = new ArrayList<Fireball>();
+	private ArrayList<Fireball> toRemoveF = new ArrayList<Fireball>();
 	private int fireInt = 600;
 	private int fire = 0;
 	private int lives = 3;
 	private int score = 0;
 	private boolean isPlaying = false;
 	private boolean isDead = false;
+	public static boolean bugFixVal=false;
+	
+	public void reset() {
+		for(int n=m.size()-1;n>=0;n--){
+			m.remove(n);
+		}
+		for (int z=f.size()-1;z>=0;z--) {
+			f.remove(z);
+		}
+		dude.reset();
+		metInt=0;
+		m = new ArrayList<Meteor>();
+		toRemove = new ArrayList<Meteor>();
+		metInterval = 60;
+		d = new ArrayList<Drink>();
+		driInt = 900;
+		drink = 0;
+		drinkLenMax = 300;
+		drinkLen=0;
+		f = new ArrayList<Fireball>();
+		toRemoveF = new ArrayList<Fireball>();
+		fireInt = 600;
+		fire = 0;
+		lives=3;
+		score = 0;
+		panel = new GamePanels(this, dude, m, d, f);
+		frame.add(panel);
+		frame.setSize(WIDTH, HEIGHT);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		frame.addKeyListener(this);
+		bugFixVal=true;
+		t.stop();
+	}
 
 	public static void main(String[] args) {
 		new Game().go();
@@ -59,7 +95,6 @@ public class Game implements KeyListener, ActionListener {
 		frame.addKeyListener(this);
 
 		t = new Timer(1000 / FPS, this);
-		t.start();
 	}
 
 	@Override
@@ -79,15 +114,12 @@ public class Game implements KeyListener, ActionListener {
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			isPlaying = true;
 			isDead=false;
+			t.restart();
 		}
 	}
 
 	public int getLives() {
 		return lives;
-	}
-	
-	public void setLives(int num) {
-		lives=num;
 	}
 
 	public int getScore() {
@@ -98,11 +130,10 @@ public class Game implements KeyListener, ActionListener {
 		panel.repaint();
 		if (isPlaying) {
 			dude.physics();
-			if (met == interval) {
+			if (metInt == metInterval) {
 				m.add(new Meteor());
-				interval = (r.nextInt(6) + 1) * 15;
-
-				met = 0;
+				metInterval = (r.nextInt(6) + 1) * 15;
+				metInt = 0;
 			}
 			if (fire == fireInt) {
 				f.add(new Fireball());
@@ -114,7 +145,6 @@ public class Game implements KeyListener, ActionListener {
 				driInt = (r.nextInt(11) + 10) * 60;
 				drink = 0;
 			}
-			ArrayList<Meteor> toRemove = new ArrayList<Meteor>();
 			for (Meteor n : m) {
 				n.physics();
 				if (dude.getRect().intersects(n.getRect())) {
@@ -126,7 +156,6 @@ public class Game implements KeyListener, ActionListener {
 					toRemove.add(n);
 				}
 			}
-			ArrayList<Fireball> toRemoveF = new ArrayList<Fireball>();
 			for (Fireball z : f) {
 				z.physics();
 				if (dude.getRect().intersects(z.getRect())) {
@@ -157,7 +186,7 @@ public class Game implements KeyListener, ActionListener {
 			if (dude.isSlow()) {
 				drinkLen++;
 			}
-			met++;
+			metInt++;
 			drink++;
 			fire++;
 			score++;

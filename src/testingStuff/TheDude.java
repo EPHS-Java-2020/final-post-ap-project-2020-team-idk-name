@@ -175,10 +175,11 @@ public class TheDude {
 	}
 
 	public void reset() {
-		x = (Game.WIDTH / 2) - w / 2;
+		x = (Game.WIDTH / 2) - (w / 2);
 		y = Game.floorHeight - h;
-		vy = 0;
 		vx = 0;
+		vy = 0;
+		setSlow(false);
 	}
 
 
