@@ -22,7 +22,7 @@ public class Fireball {
 	public Fireball() {
 		Random r = new Random();
 		k = r.nextInt(2);
-		int s=r.nextInt(3)+1;
+		int s=r.nextInt(2)+1;
 		w = s*20;
 		h = s*10;
 		vx = ((r.nextInt(41) + 10) / 10);
