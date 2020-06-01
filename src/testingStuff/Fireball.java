@@ -26,9 +26,9 @@ public class Fireball {
 		w = s*20;
 		h = s*10;
 		vx = ((r.nextInt(41) + 10) / 10);
+		y=(r.nextInt(2)*30)+420;
 		if (k == 0) {
 			x = 0;
-			y = Game.floorHeight - 50;
 			try {
 				img = ImageIO.read(new File("fire-BallL.png"));
 			} catch (IOException e) {
@@ -36,7 +36,6 @@ public class Fireball {
 			}
 		} else {
 			x = Game.WIDTH - w;
-			y = Game.floorHeight - 50;
 			try {
 				img = ImageIO.read(new File("fire-BallR.png"));
 			} catch (IOException f) {
