@@ -1,4 +1,4 @@
-package testingStuff;
+package theGame;
 
 import java.awt.Color;
 import java.awt.Font;
