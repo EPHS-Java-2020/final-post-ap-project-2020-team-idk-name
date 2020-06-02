@@ -22,7 +22,6 @@ public class GamePanels extends JPanel {
 	private ArrayList<Fireball> f = new ArrayList<>();
 
 	public GamePanels(Game game, TheDude dude, ArrayList<Meteor> m, ArrayList<Drink> d, ArrayList<Fireball> f) {
-		//puts all of the images in the game on the screen
 		this.dude = dude;
 		this.game = game;
 		this.m = m;
@@ -43,7 +42,6 @@ public class GamePanels extends JPanel {
 
 	@Override
 	public void paintComponent(Graphics g1) {
-		//makes the background, starting screen, and ending screen
 		g1.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
 		g1.drawImage(background, 0, 0, Game.WIDTH, Game.HEIGHT, null);
 		g1.setColor(new Color(56, 24, 0));
@@ -52,7 +50,8 @@ public class GamePanels extends JPanel {
 			g1.setFont(new Font("Super Mario 256", Font.PLAIN, 40));
 			g1.setColor(Color.black);
 			g1.drawString("You died. Your score was " + game.getScore(), 400, 200);
-			g1.drawString("Press space to play again", 400, 250);
+			g1.drawString("highscore is: "+ game.getHighScore(), 400, 250);
+			g1.drawString("Press space to play again", 400, 300);
 			game.reset();
 		} else if (game.getPlaying() && !game.getDead()) {
 			dude.update(g1);

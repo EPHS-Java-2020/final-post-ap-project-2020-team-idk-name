@@ -4,8 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -37,6 +42,7 @@ public class Game implements KeyListener, ActionListener {
 	private int score = 0;
 	private boolean isPlaying = false;
 	private boolean isDead = false;
+	private int highscore;
 	
 
 	public void reset() {
@@ -120,7 +126,9 @@ public class Game implements KeyListener, ActionListener {
 	public int getLives() {
 		return lives;
 	}
-
+	public int getHighScore() {
+		return highscore;
+	}
 	public int getScore() {
 		return score;
 	}
@@ -195,6 +203,27 @@ public class Game implements KeyListener, ActionListener {
 			score++;
 			if (lives == 0) {
 				isDead = true;
+			
+				try {
+					Scanner input = new Scanner(new File("highscore.txt"));
+					while (input.hasNext()) {
+						String word= input.next();
+						int num = Integer.parseInt(word);
+						highscore = num;
+						if (score>num) {
+							highscore= score;
+							try {
+								PrintStream output= new PrintStream(new File("highscore.txt"));
+								output.println(score);
+								output.close();
+							}catch(Exception e3) {
+								
+							}
+						}
+					}
+				} catch (Exception e2) {
+					
+				}
 				isPlaying = false;
 			}
 		}
