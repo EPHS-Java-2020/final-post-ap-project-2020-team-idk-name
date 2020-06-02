@@ -22,6 +22,7 @@ public class GamePanels extends JPanel {
 	private ArrayList<Fireball> f = new ArrayList<>();
 
 	public GamePanels(Game game, TheDude dude, ArrayList<Meteor> m, ArrayList<Drink> d, ArrayList<Fireball> f) {
+		//puts all of the images in the game on the screen
 		this.dude = dude;
 		this.game = game;
 		this.m = m;
@@ -42,6 +43,7 @@ public class GamePanels extends JPanel {
 
 	@Override
 	public void paintComponent(Graphics g1) {
+		//makes the background, starting screen, and ending screen
 		g1.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
 		g1.drawImage(background, 0, 0, Game.WIDTH, Game.HEIGHT, null);
 		g1.setColor(new Color(56, 24, 0));

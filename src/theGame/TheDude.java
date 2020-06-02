@@ -18,18 +18,24 @@ public class TheDude {
 	public boolean didJump = false;
 
 	public Rectangle getRect() {
+		// Returns character hitbox
 		return new Rectangle((int) x, (int) y, w, h);
 	}
+	
 
 	public void setSlow(boolean state) {
+		//sets the state to a slower speed
 		isSlow = state;
 	}
-
+	
 	public boolean isSlow() {
+		//return if character is slow or not
 		return isSlow;
 	}
+	
 
 	public TheDude() {
+		//Changes the characters image based on what he's doing
 		x = (Game.WIDTH / 2) - (w / 2);
 		y = Game.floorHeight - h;
 		vx = 0;
@@ -77,8 +83,10 @@ public class TheDude {
 		img = standL;
 
 	}
+	
 
 	public void physics() {
+		//This determines the characters speed, velocity, and acceleration
 		if (isSlow == false) {
 			y += vy;
 			x += vx;
@@ -101,6 +109,7 @@ public class TheDude {
 	}
 
 	public void right() {
+		//Changes his speed based on what he's doing
 		vx = 5;
 		if (crouch == true) {
 			vx = 3;
@@ -108,6 +117,7 @@ public class TheDude {
 	}
 
 	public void left() {
+		//Changes his speed based on what he's doing
 		vx = -5;
 		if (crouch == true) {
 			vx = -3;
@@ -115,6 +125,7 @@ public class TheDude {
 	}
 
 	public void jump() {
+		//Changes his speed based on what he's doing
 		didJump = true;
 		if (Math.abs(vx) == 3) {
 			vx = 5 * vx / 3;
@@ -131,6 +142,7 @@ public class TheDude {
 	}
 
 	public void crouch() {
+		//Changes his speed based on what he's doing
 		if (y + h == Game.floorHeight) {
 			crouch = true;
 			if (Math.abs(vx) == 5) {
@@ -142,6 +154,7 @@ public class TheDude {
 	}
 
 	public void update(Graphics g) {
+		//updates the image based on what he's doing
 		if (crouch == true) {
 			if (isSlow == false) {
 				if (vx > 0) {
@@ -175,6 +188,7 @@ public class TheDude {
 	}
 
 	public void reset() {
+		//resets the character to original state and position
 		x = (Game.WIDTH / 2) - (w / 2);
 		y = Game.floorHeight - h;
 		vx = 0;

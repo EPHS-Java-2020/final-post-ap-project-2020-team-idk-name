@@ -15,10 +15,12 @@ public class Meteor {
 	public int w, h;
 	
 	public Rectangle getRect() {
+		// Returns character hitbox
 		return new Rectangle((int)x,(int)y,w,h);
 	}
 	
 	public Meteor() {
+		//Creates a new meteor object with a random size and position
 		Random r=new Random();
 		w=r.nextInt(101)+50;
 		h=w;
@@ -33,6 +35,7 @@ public class Meteor {
 	}
 	
 	public void physics() {
+		//determines the meteors velocity
 		y += vy;
 		if ((y + h) > Game.floorHeight) {
 			y = 1000;
@@ -40,6 +43,7 @@ public class Meteor {
 	}
 	
 	public void update(Graphics g) {
+		//updates the meteors position at the current framerate
 		g.drawImage(img, (int) x, (int) y, w, h, null);
 	}
 
