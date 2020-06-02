@@ -42,7 +42,7 @@ public class Game implements KeyListener, ActionListener {
 	private int score = 0;
 	private boolean isPlaying = false;
 	private boolean isDead = false;
-	private int highscore;
+	private int highscore=0;
 	
 
 	public void reset() {
@@ -98,6 +98,13 @@ public class Game implements KeyListener, ActionListener {
 
 		t = new Timer(1000 / FPS, this);
 		t.start();
+		try {
+			PrintStream output= new PrintStream(new File("highscore.txt"));
+			output.println(0);
+			output.close();
+		}catch(Exception e3) {
+			
+		}
 	}
 
 	@Override
