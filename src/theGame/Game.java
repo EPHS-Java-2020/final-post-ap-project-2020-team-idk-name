@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Random;
@@ -227,6 +226,7 @@ public class Game implements KeyListener, ActionListener {
 								
 							}
 						}
+						input.close();
 					}
 				} catch (Exception e2) {
 					
