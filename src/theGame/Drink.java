@@ -10,15 +10,16 @@ import java.awt.Rectangle;
 
 public class Drink {
 	
+	//all instance variables
 	public int w=25,h=50;
 	public int x,y;
 	private Image img;
 	
-	public Rectangle getRect() {
+	public Rectangle getRect() { //returns the hit box of the slow drink
 		return new Rectangle(x,y,w,h);
 	}
 	
-	public Drink(Rectangle dudeRect) {
+	public Drink(Rectangle dudeRect) { //slow drink object: spawns an energy drink at a random x position at a fixed y position over a random spawn interval, and generates the image for the slow drink
 		Random r=new Random();
 		y=Game.floorHeight-h;
 		do {
@@ -32,11 +33,11 @@ public class Drink {
 		}
 	}
 	
-	public void update(Graphics g) {
+	public void update(Graphics g) { //updates the image of the slow drink at the current frame rate
 		g.drawImage(img, (int) x, (int) y, w, h, null);
 	}
 	
-	public void remove() {
+	public void remove() { //removes the slow drink
 		y=1000;
 	}
 	
