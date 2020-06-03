@@ -19,7 +19,7 @@ public class Drink {
 		return new Rectangle(x,y,w,h);
 	}
 	
-	public Drink(Rectangle dudeRect) { //slow drink object: spawns an energy drink at a random x position at a fixed y position over a random spawn interval, and generates the image for the slow drink
+	public Drink(Rectangle dudeRect) { //slow drink object: spawns a slow drink at a random x position at a fixed y position over a random spawn interval, and generates the image for the slow drink
 		Random r=new Random();
 		y=Game.floorHeight-h;
 		do {
