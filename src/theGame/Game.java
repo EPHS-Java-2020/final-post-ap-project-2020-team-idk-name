@@ -16,8 +16,9 @@ import javax.swing.Timer;
 
 public class Game implements KeyListener, ActionListener {
 
-	public static final int FPS = 60, WIDTH = 1366, HEIGHT = 695, floorHeight = 500;
-
+	public static final int FPS = 60, WIDTH = 1366, HEIGHT = 695, floorHeight = 500; //creates the background dimensions and sets a frame rate per second for the game to run at
+	
+	//all instance variables
 	private TheDude dude;
 	private JFrame frame;
 	private JPanel panel;
@@ -41,10 +42,9 @@ public class Game implements KeyListener, ActionListener {
 	private int score = 0;
 	private boolean isPlaying = false;
 	private boolean isDead = false;
-	private int highscore=0;
-	
+	private int highscore=0; 
 
-	public void reset() {
+	public void reset() { //resets all aspects of the game to their original state
 		for (int n = m.size() - 1; n >= 0; n--) {
 			m.remove(n);
 		}
@@ -71,20 +71,21 @@ public class Game implements KeyListener, ActionListener {
 		frame.setVisible(true);
 		frame.addKeyListener(this);
 	}
+	
 
-	public static void main(String[] args) {
+	public static void main(String[] args) { //starts the game
 		new Game().go();
 	}
 
-	public boolean getPlaying() {
+	public boolean getPlaying() { //returns a boolean of whether the game is being played or not
 		return isPlaying;
 	}
 
-	public boolean getDead() {
+	public boolean getDead() { //returns a boolean if the player is dead or not
 		return isDead;
 	}
 
-	public void go() {
+	public void go() { //makes frames for the background, player, and all the game panels, and exports the high score to an external file on the device so that it can be tracked
 		frame = new JFrame("");
 		dude = new TheDude();
 		panel = new GamePanels(this, dude, m, d, f);
@@ -107,7 +108,7 @@ public class Game implements KeyListener, ActionListener {
 	}
 
 	@Override
-	public void keyPressed(KeyEvent e) {
+	public void keyPressed(KeyEvent e) { //defines all the key presses you can make including space to start/restart the game
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			dude.jump();
 		}
@@ -129,17 +130,17 @@ public class Game implements KeyListener, ActionListener {
 		}
 	}
 
-	public int getLives() {
+	public int getLives() { //returns the number of lives remaining for the player
 		return lives;
 	}
-	public int getHighScore() {
+	public int getHighScore() { //returns the local high score
 		return highscore;
 	}
-	public int getScore() {
+	public int getScore() { //returns the current score of the player
 		return score;
 	}
 
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) { //manages all the game's physics (movement of player/meteors/fire balls, slow drink spawns, hit box interference leading to losing lives, high score tracker, etc.)
 		panel.repaint();
 		if (isPlaying) {
 			dude.physics();
