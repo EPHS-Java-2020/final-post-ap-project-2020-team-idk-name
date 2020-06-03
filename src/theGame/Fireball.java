@@ -10,16 +10,17 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 public class Fireball {
+	//all instance variables
 	public double x, y, vx;
 	private Image img;
 	public int w, h;
 	private int k;
 
-	public Rectangle getRect() {
+	public Rectangle getRect() { //returns the hit box of the fire ball
 		return new Rectangle((int) x, (int) y, w, h);
 	}
 
-	public Fireball() {
+	public Fireball() { //fire ball object: spawns a fire ball into the game with a random size, speed, and spawn interval; and generates the image based on that
 		Random r = new Random();
 		k = r.nextInt(2);
 		int s=r.nextInt(2)+1;
@@ -45,7 +46,7 @@ public class Fireball {
 
 	}
 
-	public void physics() {
+	public void physics() { //determines the velocity of the fire ball
 
 		if (k == 0) {
 			x += vx;
@@ -60,7 +61,7 @@ public class Fireball {
 		}
 	}
 
-	public void update(Graphics g) {
+	public void update(Graphics g) { //updates the image of the fire ball based at the current frame rate
 		g.drawImage(img, (int) x, (int) y, w, h, null);
 	}
 
