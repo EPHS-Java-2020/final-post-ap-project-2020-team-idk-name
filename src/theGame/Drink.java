@@ -2,7 +2,6 @@ package theGame;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.util.Random;
@@ -26,7 +25,7 @@ public class Drink {
 		x=r.nextInt(Game.WIDTH+1);
 		}while(dudeRect.intersects(getRect()));
 		try {
-			img=ImageIO.read(new File("drink.png"));
+			img=ImageIO.read(getClass().getClassLoader().getResource("drink.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

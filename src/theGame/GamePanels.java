@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
@@ -28,12 +27,12 @@ public class GamePanels extends JPanel {
 		this.d = d;
 		this.f = f;
 		try {
-			background = ImageIO.read(new File("background.png"));
+			background = ImageIO.read(getClass().getClassLoader().getResource("background.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		try {
-			heart = ImageIO.read(new File("Heart-Icon.png"));
+			heart = ImageIO.read(getClass().getClassLoader().getResource("Heart-Icon.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

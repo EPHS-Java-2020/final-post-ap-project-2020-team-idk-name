@@ -3,7 +3,6 @@ package theGame;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.util.Random;
@@ -28,7 +27,7 @@ public class Meteor {
 		y = 0;
 		vy = (r.nextInt(21)+10)/10;
 		try {
-			img = ImageIO.read(new File("meteor-cutout.png"));
+			img = ImageIO.read(getClass().getClassLoader().getResource("meteor-cutout.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

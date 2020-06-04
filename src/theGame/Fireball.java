@@ -3,7 +3,6 @@ package theGame;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
@@ -31,14 +30,14 @@ public class Fireball {
 		if (k == 0) {
 			x = 0;
 			try {
-				img = ImageIO.read(new File("fire-BallL.png"));
+				img = ImageIO.read(getClass().getClassLoader().getResource("fire-BallL.png"));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		} else {
 			x = Game.WIDTH - w;
 			try {
-				img = ImageIO.read(new File("fire-BallR.png"));
+				img = ImageIO.read(getClass().getClassLoader().getResource("fire-BallR.png"));
 			} catch (IOException f) {
 				f.printStackTrace();
 			}

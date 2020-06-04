@@ -3,7 +3,6 @@ package theGame;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
@@ -41,42 +40,42 @@ public class TheDude {
 		vx = 0;
 		vy = 0;
 		try {
-			standL = ImageIO.read(new File("standL.png"));
+			standL = ImageIO.read(getClass().getClassLoader().getResource("standL.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		try {
-			crouchL = ImageIO.read(new File("crouchL.png"));
+			crouchL = ImageIO.read(getClass().getClassLoader().getResource("crouchL.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		try {
-			standR = ImageIO.read(new File("standR.png"));
+			standR = ImageIO.read(getClass().getClassLoader().getResource("standR.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		try {
-			crouchR = ImageIO.read(new File("crouchR.png"));
+			crouchR = ImageIO.read(getClass().getClassLoader().getResource("crouchR.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		try {
-			standRD = ImageIO.read(new File("standRD.png"));
+			standRD = ImageIO.read(getClass().getClassLoader().getResource("standRD.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		try {
-			crouchRD = ImageIO.read(new File("crouchRD.png"));
+			crouchRD = ImageIO.read(getClass().getClassLoader().getResource("crouchRD.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		try {
-			standLD = ImageIO.read(new File("standLD.png"));
+			standLD = ImageIO.read(getClass().getClassLoader().getResource("standLD.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		try {
-			crouchLD = ImageIO.read(new File("crouchLD.png"));
+			crouchLD = ImageIO.read(getClass().getClassLoader().getResource("crouchLD.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

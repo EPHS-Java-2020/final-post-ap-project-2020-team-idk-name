@@ -18,7 +18,7 @@ public class Game implements KeyListener, ActionListener {
 
 	public static final int FPS = 60, WIDTH = 1366, HEIGHT = 695, floorHeight = 500; //creates the background dimensions and sets a frame rate per second for the game to run at
 	
-	//all instance variable
+	//all instance variables
 	private TheDude dude;
 	private JFrame frame;
 	private JPanel panel;
